@@ -109,7 +109,8 @@ class MNMF:
         """
         Method to save the clusters, node representations, cluster memberships and logs.
         """
-        json_dumper(self.optimal_indices, self.args.assignment_output)
+        if hasattr(self, "optimal_indices"):
+            json_dumper(self.optimal_indices, self.args.assignment_output)
         json_dumper(self.logs, self.args.log_output)
         loss_printer(self.logs)
         if self.args.dump_matrices:
